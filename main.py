@@ -14,6 +14,10 @@ client = MongoClient(mongodb_url)
 db = client["Library"]
 students_collection = db["students"]
 
+@app.get("/", status_code=200)
+async def api_running():
+    return {"message": "API running successfully"}
+
 # Create a new student
 @app.post("/students/", status_code=201)
 async def create_student(student: Student):
